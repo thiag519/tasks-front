@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <link rel="stylesheet" href="./style/style.css">
+  <title>Guia de Estudo</title>
+</head>
+<body>
+  <header id="header">
+    <div class="header-area">
+      <div class="logo">
+        <h1>Lista de Tarefas</h1>
+      </div>
+      <div class="menu-mobile-line .openMenu .closeMenu">
+        <div class="mm-line"></div>
+        <div class="mm-line"></div>
+        <div class="mm-line"></div>
+      </div>
+      <div class="menu">
+        <nav>
+          <ul>
+            <li class="active"><a href="#header">Criar tarefa</a></li>
+            <li><a href="#section-2">Tarefas a fazer</a></li>
+            <li><a href="#section-3">Tarefas em andamento</a></li>
+            <li><a href="#section-4">Tarefas concluídas</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <section class="create-task">
+    <h1>Organize suas tarefas do jeito facio e prático</h1>
+    
+    <div class="create-task-about">
+      <p>Organizei meus estudos e atividades com um software que desenvolvi para facilitar e otimizar minha rotina de estudos e
+      trabalho.</p>
+      
+      <p>Sabemos que, com tantas informações e tarefas no dia a dia, manter o foco nos objetivos pode se tornar cada vez mais
+      difícil. Esse software me ajuda a gerenciar minhas atividades de forma simples e eficiente.</p>
+      
+      <p>Com ele, eu posso organizar minhas tarefas, receber lembretes diários e manter o foco no que realmente importa, tornando
+      meus objetivos muito mais alcançáveis.</p>
+    </div>
+    <div class=" create-task-button">
+      <button type="button">Criar nova tarefa</button>
+    </div>
+    <div class="create-task-modal" >
+      <span><img src="./assets/icons8-x-30.png" alt="exit" width="20px"></span>
+      <form method="POST" >
+        <h2>Criar Nova Tarefa</h2>
+        <label for="task-title">Título</label>
+        <input type="text" id="task-title" name="title">
+
+        <label for="task-description">Descrição</label>
+        <textarea id="task-description" name="description" required></textarea>
+
+        <!--<label for="task-password">Senha</label>
+        <input type="password" id="task-password" name="password" required>-->
+
+        <button type="submit">Criar Tarefa</button>
+      </form>
+    </div>
+    <div class="status-menssage"></div>
+  </section>
+  <main> 
+    <div class="all-tasks-area">
+      <section id="section-2" class="task-list-todo">
+        <h1>Lista de Tarefas a fazer</h1>
+        <div class="todo-list template">
+          <div class="todo" draggable="true" >
+            <span><img src="./assets/icons8-x-30.png" alt="exit" width="10px"></span>
+            <h3 class="title"></h3>
+            <p class="description"></p>
+          </div>
+        </div>
+       <div class="tasks-area"></div> 
+      </section>
+      
+      <section id="section-3" class="task-list-doing">
+        <h1>Lista de Tarefas em Andamento</h1>
+        <div class="doing-list template">
+          <div class="doing" draggable="true">
+            <span><img src="./assets/icons8-x-30.png" alt="exit" width="10px"></span>
+            <h3 class="title"></h3>
+            <p class="description"></p>
+          </div>
+        </div>
+        <div class="tasks-area-1"></div>
+      </section>
+      <section id="section-4" class="task-list-done">
+        <h1>Lista de Tarefas Concluídas</h1>
+        <div class="done-list template">
+          <div class="done" draggable="true">
+            <span><img src="./assets/icons8-x-30.png" alt="exit" width="10px"></span>
+            <h3 class="title"></h3>
+            <p class="description"></p>
+          </div>
+        </div>
+        <div class="tasks-area-2"></div>
+      </section>
+    </div>
+    
+  </main>  
+  <footer>
+    <div class="contact-area">
+      <div class="contact-area-icons">
+        <div class="email">
+          <a href="mailto:thiagosouzadasilva78@gmail.com" target="_blank">
+          <img src="./assets/icon_email.png" alt="email" width="10px" height="10px"><p>thiagosouzadasilva78@gmail.com</p></a>
+        </div>
+      </div>
+      <div class="copyright"><a target="_blank" href="http://createsites.com.br">© 2026 CreateSites.</a></div>
+    </div>
+  </footer>
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
