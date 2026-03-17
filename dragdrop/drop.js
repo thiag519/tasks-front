@@ -4,6 +4,7 @@
  * @returns { void } Não retorna nada, apenas executa a ação de soltar o elemento arrastado.
  */
 
+import { changeTaskLocal } from "../utils/getTasksLocal.js";
 import { taskId } from "./event.js";
 
 //import { listingTasks } from "../utils/listingTasks.js";
@@ -21,24 +22,29 @@ export const drop = (e) => {
   if(!id) {
     console.log("taskId: ",taskId)
     id = taskId;
-  } ;
+  };
+
   const el = document.querySelector(`[data-task="${id}"]`);
   //console.log("O elemento",el)
   const areaDrop = e.currentTarget;
   //console.log("A onde dropa",areaDrop)
   try {
-    //await changeTask(id);
+    
     if(el.classList.contains('todo') && areaDrop === tasksArea1){
       el.classList.replace('todo', 'doing');
       areaDrop.appendChild(el);
+      console.log(id)
+      changeTaskLocal(id, 'doing');
     }
     if(el.classList.contains('doing') && areaDrop === tasksArea2){
       el.classList.replace('doing', 'done')
       areaDrop.appendChild(el);
+      changeTaskLocal(id, 'done');
     }
     if(el.classList.contains('done') && areaDrop === tasksArea1){
       el.classList.replace('done', 'doing');
       areaDrop.appendChild(el);
+      changeTaskLocal(id, 'doing');
     }
   } catch (err) {
     console.error('Erro ao atualizar a tarefa:', err)

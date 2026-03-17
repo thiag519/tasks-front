@@ -135,8 +135,6 @@ header {
   border-bottom: 2px solid var(--verde);
   transition: 0.5s ease-out;
 }
-
-
 .create-task {
   display: flex;
   flex-direction: column;
@@ -153,7 +151,6 @@ header {
   background-image: url('../assets/pngegg.png');
   background-position: center;
   background-size: cover;
-  
 }
 .create-task h1 {
   height: 100px;
@@ -162,17 +159,14 @@ header {
   color: var(--cinza-escuro);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
 .create-task .create-task-about {
   width: 80%;
 }
-
 .create-task p {
   color: var(--cinza-escuro);
   font-size: x-large;
   padding: 10px;
 }
-
 .create-task .create-task-button button {
   padding: 15px;
   border-radius: 6px;
@@ -181,12 +175,10 @@ header {
   font-size: large;
   font-weight: bold;
   border: 2px solid var(--cinza-escuro);
-
   &:hover {
     opacity: 0.8;
   }
 }
-
 .create-task .status-menssage {
   color: var(--cinza-escuro);
 }
@@ -257,7 +249,7 @@ main {
   font-size: 13px;
   color: var(--cinza-escuro);
 }
-.todo {
+.todo, .doing, .done {
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -270,11 +262,9 @@ main {
   height: 180px;
   border-left: 3px solid;
   border-radius: 1px;
-  border-color: var(--vermelho);
-  position: relative;
-  box-shadow: 3px 8px 20px #E0313160;
   position: relative;
   margin-top: 20px;
+  overflow: hidden;
   span {
     z-index: 2;
     display: flex;
@@ -289,82 +279,27 @@ main {
     color: var(--cinza-escuro);
     top: 0;
     right: 0;
-
-    &:hover {
-      background-color: #E0313130;
-    }
   }
 }
-
-.doing {
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  background-color: var(--cinza-claro);
-  padding: 10px;
-  width: 220px;
-  max-width: 250px;
-  height: 150px;
-  border-left: 3px solid;
-  border-radius: 1px;
-  border-color: var(--laranja);
-  position: relative;
+.todo {
+  box-shadow: 3px 8px 20px #E0313160;
+  border-color: var(--vermelho);
+  span:hover {
+    background-color: #E0313130;
+  }
+}
+.doing{
   box-shadow: 3px 8px 20px #F08C0060;
-  margin-top: 20px;
-  span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    font-size: small;
-    font-weight: bold;
-    color: var(--cinza-escuro);
-    top: 0;
-    right: 0;
-
-    &:hover {
+  border-color: var(--laranja);
+  span:hover {
       background-color: #F08C0030;
     }
-  }
 }
-
 .done {
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  background-color: var(--cinza-claro);
-  padding: 5px;
-  width: 220px;
-  max-width: 250px;
-  height: 150px;
-  border-left: 3px solid;
-  border-radius: 1px;
-  border-color: var(--verde-escuro);
-  position: relative;
   box-shadow: 3px 8px 20px #2F9E4460;
-  margin-top: 20px;
-  span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    font-size: small;
-    font-weight: bold;
-    color: var(--cinza-escuro);
-    top: 0;
-    right: 0;
-
-    &:hover {
-      background-color: #2F9E4430;
-    }
+  border-color: var(--verde-escuro);
+  span:hover {
+    background-color: #2F9E4430;
   }
 }
 
@@ -565,8 +500,7 @@ form {
   .todo, .doing, .done{
     margin-top: 10px;
     width: 150px;
-    max-width: 250px;
-    height: 120px;
+    height: 100px;
   }
   .tasks-area,
   .tasks-area-1,

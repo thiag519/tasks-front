@@ -12,5 +12,5 @@ export const dragStart = (e) => {
   
   e.dataTransfer.setData("task", taskId);
 
-  console.log('id: ',taskId)
+  //console.log('id: ',taskId)
 }

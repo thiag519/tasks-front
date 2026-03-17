@@ -1,6 +1,7 @@
 import { dragover } from '../dragdrop/drag.js';
 import { dragStart } from '../dragdrop/event.js';
 import { drop } from '../dragdrop/drop.js';
+import { deleteTaskLocal } from './getTasksLocal.js';
 
 
 let c = (el) => document.querySelector(el);
@@ -20,7 +21,7 @@ if(doneList) doneList.style.display = 'none';
 
 
 // listar tarefas
-export const listingTasks = async (tasks) => {
+export const listingTasks = (tasks) => {
 
   // limpa o campo antes de atualizar a lista de tarefas para evitar que as tarefas sejam duplicadas
   tasksArea.innerHTML = '';
@@ -36,13 +37,11 @@ export const listingTasks = async (tasks) => {
   const createTaskElement = (template, item)  => {
     
     let el = template.querySelector('.todo, .doing, .done');
-    //console.log(el)
     let task = el.cloneNode(true);
 
     task.setAttribute('data-task', item.id );
     task.addEventListener('dragstart', dragStart);
 
-    //console.log(task.getAttribute('task'))
     let deleteTask = task.querySelector('span');
     let title = task.querySelector('.title');
     let description = task.querySelector('.description');
@@ -53,12 +52,12 @@ export const listingTasks = async (tasks) => {
 
     deleteTask.addEventListener('click', () => {
       task.style.display = 'none';
+      deleteTaskLocal(item.id)
     });
-    return task
+    return task;
   };
 
    tasks.forEach((item) => {
-    //console.log(item)
     if(item) {
       if(item.status === 'todo'){
         fragmentTodo.appendChild(createTaskElement(todoList, item))
@@ -69,7 +68,7 @@ export const listingTasks = async (tasks) => {
       if(item.status === 'done'){
         fragmentDone.appendChild(createTaskElement(doneList, item))
       }
-    }
+    };
   });
 
   
@@ -80,7 +79,7 @@ export const listingTasks = async (tasks) => {
 
   } catch (error) {
     console.error('Erro ao listar tarefas:', error);
-  }
+  };
 }
     
 

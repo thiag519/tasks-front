@@ -1,5 +1,7 @@
 import { listingTasks } from "./utils/listingTasks.js";
-import { tasks } from "./data/tasks.js";
+//import { tasks } from "./data/tasks.js";
+
+import { createTaskLocal, getTasksLocal } from "./utils/getTasksLocal.js";
 
 
 let c = (el) => document.querySelector(el); //seleciona um elemento
@@ -47,6 +49,7 @@ menuBtnMob.forEach((item) => {
 
 
 //busca tasks na pasta data
+let tasks = getTasksLocal();
 listingTasks(tasks);
 
 
@@ -80,3 +83,29 @@ window.addEventListener('scroll', () => {
     };
   });
 });
+
+
+const form = document.querySelector('.create-task-modal form');
+const statusMessage = document.querySelector('.status-menssage');
+
+
+form.addEventListener('submit', (e) =>{
+  e.preventDefault()
+  statusMessage.textContent = 'Carregando...';
+  let id = Date.now().toString();
+
+  createTaskLocal(id, form.title.value, form.description.value);
+  form.reset()
+  setTimeout(() => {
+    modal.style.display = 'none';
+    //document.body.style.overflow = '';
+  },200)
+  setTimeout(() => {
+    statusMessage.textContent = '';
+    location.reload();
+  },600)  
+  
+});
+
+
+//localStorage.clear()
