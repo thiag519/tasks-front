@@ -50,7 +50,8 @@
     </div>
     <div class="create-task-modal" >
       <span><img src="./assets/icons8-x-30.png" alt="exit" width="20px"></span>
-      <form method="POST" >
+
+      <form id="form">
         <h2>Criar Nova Tarefa</h2>
         <label for="task-title">Título</label>
         <input type="text" id="task-title" name="title" maxlength="30">
@@ -58,10 +59,10 @@
         <label for="task-description">Descrição</label>
         <textarea id="task-description" name="description" maxlength="200" required></textarea>
 
-        <!--<label for="task-password">Senha</label>
-        <input type="password" id="task-password" name="password" required>-->
+        <label for="task-password">Senha</label>
+        <input type="password" id="task-password" name="password" required>
 
-        <button type="submit">Criar Tarefa</button>
+        <button type="submit" >Criar Tarefa</button>
       </form>
     </div>
     <div class="status-menssage"></div>

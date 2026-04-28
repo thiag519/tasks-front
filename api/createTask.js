@@ -3,53 +3,75 @@
  * Esta função é responsável por criar uma nova tarefa. Ela coleta os dados do formulário, envia uma requisição POST para o backend e exibe mensagens de status para o usuário.
  * @returns { void } Não retorna nada, apenas executa a ação de criar uma nova tarefa e exibir mensagens de status.
  */
-/*
-import { URL_POST } from "../secret/secret";
 
+import { URL_POST } from "../secret/secret.js";
 
-const form = document.querySelector('.create-task-modal form');
-const statusMessage = document.querySelector('.status-menssage');
 
 export const createTask = () => {
+
+  const modal = document.querySelector('.create-task-modal');
+  const statusMessage = document.querySelector('.status-menssage');
+  const form = document.querySelector('#form');
+
+  //console.log("Form encontrado:", form);
+  if (!form) {
+    console.warn("Form não encontrado");
+    return;
+  }
+   if (!statusMessage) {
+    console.warn("statusMessage não encontrado");
+    return;
+  }
   
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+  form.addEventListener('submit', async (e) => {
+    
+    e.preventDefault();
+    //e.stopPropagation();
 
-  const data = {
-    title: form.title.value,
-    description: form.description.value
-  };
-  const token = form.password.value;
-
-  statusMessage.textContent = "Carregando...";
-  try {
-    const response = await fetch(URL_POST, {
-      method: "POST",
-      headers:{
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      
-      body: JSON.stringify(data)
-    });
-
-    const result = await response.json();
-
-    if(result.success) {
-      statusMessage.textContent = "Tarefa criada com sucesso!";
-      form.reset();
-    }else {
-      statusMessage.textContent = "Erro ao criar a tarefa. Tente novamente.";
+    const formData = new FormData(e.target);
+    const password = form.password.value;
+    const data = {
+      title: formData.get('title'),
+      description: formData.get('description')
+    };
+    if (!data.title || !data.description) {
+      console.log("Título ou descrição vazios");
+      statusMessage.textContent = "Por favor, preencha todos os campos.";
+      return;
     }
-  } catch (err) {
-    statusMessage.textContent = "Erro de conexão com o servidor";
-  }
-});
+    statusMessage.textContent = "Carregando...";
+    try {
+      const response = await fetch("http://localhost:8080/tasks/add", {
+        method: "POST",
+        headers:{
+          "Content-Type": "application/json",
+          "x-admin-password": password
+        },
+        body: JSON.stringify(data)
+      });
+      const result = await response.json();
+      
+      if(result.success && response.ok) {
+        modal.style.display = 'none';
+        statusMessage.textContent = "Tarefa criada com sucesso!";
+        form.reset();
 
- if(statusMessage.textContent !== ''){
-    setInterval(() => {
+        setTimeout(() => {
+        modal.style.display = 'none';
+        //document.body.style.overflow = '';
+        },200)
+      }else {
+        modal.style.display = 'none';
+        alert(result.error || "Erro ao criar a tarefa. Acesso negado.");
+        statusMessage.textContent = result.message || "Erro ao criar a tarefa. Acesso negado.";
+      }
+    } catch (err) {
+      modal.style.display = 'none';
+      statusMessage.textContent = "Erro de conexão com o servidor";
+      console.error("Erro ao criar a tarefa:", err);
+    }
+    setTimeout(() => {
       statusMessage.textContent = '';
-  }, 5000);
-  }
-}
-*/
+    }, 5000);
+  });
+};

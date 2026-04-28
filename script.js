@@ -2,6 +2,8 @@ import { listingTasks } from "./utils/listingTasks.js";
 //import { tasks } from "./data/tasks.js";
 
 import { createTaskLocal, getTasksLocal } from "./utils/getTasksLocal.js";
+import { getTasks } from "./api/getTasks.js";
+import { createTask } from "./api/createTask.js";
 
 
 let c = (el) => document.querySelector(el); //seleciona um elemento
@@ -47,15 +49,26 @@ menuBtnMob.forEach((item) => {
   });
 });
 
+//busca tasks na localStorage para exibir caso a requisição para o backend falhe
+let tasksLocalhost = getTasksLocal();
 
-//busca tasks na pasta data
-let tasks = getTasksLocal();
-listingTasks(tasks);
+const loadTasks = async () => {
+  const tasks = await getTasks();
+  console.log("Tarefas carregadas do backend:", tasks);
+  if(tasks.length > 0){
+    listingTasks(tasks);
+  }else{
+    listingTasks(tasksLocalhost);
+  }
+}
 
+loadTasks();
 
 //Abrir e fechar o modal de criação de task
+
 const modal = c('.create-task-modal');
 const openTaskBuild = c('.create-task-button button')
+//console.log(openTaskBuild);
 openTaskBuild.addEventListener('click', () => {
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
@@ -64,8 +77,7 @@ const closeTaskBuild = c('.create-task-modal span')
 closeTaskBuild.addEventListener('click', () => {
   modal.style.display = 'none';
   document.body.style.overflow = '';
-})
-
+});
 
 // Funçao que observa o scroll para por o active na section que estiver sendo exibida
 const section = ca('section');
@@ -84,12 +96,11 @@ window.addEventListener('scroll', () => {
   });
 });
 
-
 const form = document.querySelector('.create-task-modal form');
 const statusMessage = document.querySelector('.status-menssage');
 
-
-form.addEventListener('submit', (e) =>{
+if(tasksLocalhost.length > 0){
+  form.addEventListener('submit', (e) =>{
   e.preventDefault()
   statusMessage.textContent = 'Carregando...';
   let id = Date.now().toString();
@@ -106,6 +117,8 @@ form.addEventListener('submit', (e) =>{
   },600)  
   
 });
+}
+
 
 
 //localStorage.clear()

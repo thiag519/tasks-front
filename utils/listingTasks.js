@@ -1,7 +1,8 @@
 import { dragover } from '../dragdrop/drag.js';
 import { dragStart } from '../dragdrop/event.js';
 import { drop } from '../dragdrop/drop.js';
-import { deleteTaskLocal } from './getTasksLocal.js';
+//import { deleteTaskLocal } from './getTasksLocal.js';
+import { deleteTask } from '../api/deleteTask.js';
 
 
 let c = (el) => document.querySelector(el);
@@ -22,7 +23,7 @@ if(doneList) doneList.style.display = 'none';
 
 // listar tarefas
 export const listingTasks = (tasks) => {
-
+  //console.log(tasks)
   // limpa o campo antes de atualizar a lista de tarefas para evitar que as tarefas sejam duplicadas
   tasksArea.innerHTML = '';
   tasksArea1.innerHTML = '';
@@ -42,7 +43,7 @@ export const listingTasks = (tasks) => {
     task.setAttribute('data-task', item.id );
     task.addEventListener('dragstart', dragStart);
 
-    let deleteTask = task.querySelector('span');
+    let deleteTaskElement = task.querySelector('span');
     let title = task.querySelector('.title');
     let description = task.querySelector('.description');
 
@@ -50,9 +51,9 @@ export const listingTasks = (tasks) => {
     if(title) title.textContent = item.title;
     if(description) description.textContent = item.description;
 
-    deleteTask.addEventListener('click', () => {
+    deleteTaskElement.addEventListener('click', () => {
       task.style.display = 'none';
-      deleteTaskLocal(item.id)
+      deleteTask(item.id)
     });
     return task;
   };
