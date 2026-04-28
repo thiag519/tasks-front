@@ -1,4 +1,5 @@
 import { URL_GET } from "../secret/secret.js";
+import { tasks } from "../data/tasks.js";
 
 /**
  * Função para listar as tarefas
@@ -27,7 +28,7 @@ export const getTasks = async () => {
     console.error("Erro ao listar as tarefas:", err);
     statusMessage.textContent = "Erro ao listar as tarefas. Tente novamente.";
     
-    return [];
+    return tasks; // Retorna as tarefas locais caso a requisição falhe
   }
 };
 /*setTimeout(() => {
