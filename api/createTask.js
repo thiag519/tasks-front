@@ -5,6 +5,7 @@
  */
 
 import { URL_POST } from "../secret/secret.js";
+import { getTasks } from "./getTasks.js";
 
 
 export const createTask = () => {
@@ -58,8 +59,9 @@ export const createTask = () => {
 
         setTimeout(() => {
         modal.style.display = 'none';
+        getTasks();
         //document.body.style.overflow = '';
-        },200)
+        },2000)
       }else {
         modal.style.display = 'none';
         alert(result.error || "Erro ao criar a tarefa. Acesso negado.");

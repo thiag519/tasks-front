@@ -23,9 +23,8 @@
         <nav>
           <ul>
             <li class="active"><a href="#header">Criar tarefa</a></li>
-            <li><a href="#section-2">Tarefas a fazer</a></li>
-            <li><a href="#section-3">Tarefas em andamento</a></li>
-            <li><a href="#section-4">Tarefas concluídas</a></li>
+            <li><a href="#tasks">Lista de tarefas </a></li>
+            <li><a href="#contact">Contato</a></li>
           </ul>
         </nav>
       </div>
@@ -49,9 +48,13 @@
       <button type="button">Criar nova tarefa</button>
     </div>
     <div class="create-task-modal" >
-      <span><img src="./assets/icons8-x-30.png" alt="exit" width="20px"></span>
+      
 
       <form id="form">
+        <div class="close-modal">
+          <span><img src="./assets/icons8-close-30(1).png" alt="exit" width="15px"></span>
+        </div>
+        
         <h2>Criar Nova Tarefa</h2>
         <label for="task-title">Título</label>
         <input type="text" id="task-title" name="title" maxlength="30">
@@ -65,48 +68,52 @@
         <button type="submit" >Criar Tarefa</button>
       </form>
     </div>
-    <div class="status-menssage"></div>
+    <div class="area-status-menssage">
+      <div class="status-menssage"></div>
+    </div>
   </section>
   <main> 
-    <div class="all-tasks-area">
-      <section id="section-2" class="task-list-todo">
-        <h1>Lista de Tarefas a fazer</h1>
+    <section id="tasks" class="all-tasks-area">
+
+      <h1>Lista de Tarefas a fazer</h1>
+      <div class="task-list-todo">
         <div class="todo-list template">
           <div class="todo" draggable="true" >
-            <span><img src="./assets/icons8-x-30.png" alt="exit" width="10px"></span>
+            <span><img src="./assets/icons8-x-30(2).png" alt="exit" width="10px"></span>
             <h3 class="title"></h3>
             <p class="description"></p>
           </div>
         </div>
        <div class="tasks-area"></div> 
-      </section>
-      
-      <section id="section-3" class="task-list-doing">
-        <h1>Lista de Tarefas em Andamento</h1>
+      </div>
+
+      <h1>Lista de Tarefas em Andamento</h1>
+      <div class="task-list-doing"> 
         <div class="doing-list template">
           <div class="doing" draggable="true">
-            <span><img src="./assets/icons8-x-30.png" alt="exit" width="10px"></span>
+            <span><img src="./assets/icons8-x-30(2).png" alt="exit" width="10px"></span>
             <h3 class="title"></h3>
             <p class="description"></p>
           </div>
         </div>
         <div class="tasks-area-1"></div>
-      </section>
-      <section id="section-4" class="task-list-done">
-        <h1>Lista de Tarefas Concluídas</h1>
+      </div>
+      
+      <h1>Lista de Tarefas Concluídas</h1>
+      <div class="task-list-done">
         <div class="done-list template">
           <div class="done" draggable="true">
-            <span><img src="./assets/icons8-x-30.png" alt="exit" width="10px"></span>
+            <span><img src="./assets/icons8-x-30(2).png" alt="exit" width="10px"></span>
             <h3 class="title"></h3>
             <p class="description"></p>
           </div>
         </div>
         <div class="tasks-area-2"></div>
-      </section>
-    </div>
+      </div>
+    </section>
     
   </main>  
-  <footer>
+  <footer id="contact">
     <div class="contact-area">
       <div class="contact-area-icons">
         <div class="email">

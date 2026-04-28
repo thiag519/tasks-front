@@ -51,7 +51,6 @@ body {
   align-items: center;
   width: 100%;
   overflow-x: hidden;
-  transition: 0.5s linear 1ms;
 }
 header {
   width: 100%;
@@ -66,7 +65,7 @@ header {
     justify-content: space-between;
     padding: 0% 10%;
     width: 100%;
-    height: 5vh;
+    min-height: 5vh;
   
     .logo h1 {
       font-size: 30px;
@@ -85,23 +84,23 @@ header {
         height: 2.3px;
         width: 100%;
         background-color: var(--verde);
-        transition: 0.5s linear 1ms;
+        transition: 0.5s linear 0ms;
         padding: 0;
       }
     }
   }
 }
 .menu {
-  width: 50%;
+  width: 20%;
   max-width: 400px;
-  height: 400px;
+  height: 200px;
   display: flex;
   position: absolute;
   right: -50%;
   top: 5vh;
   background-color: var(--cinza-claro);
   padding: 20px;
-  transition:0.5s linear 1ms;
+  transition: 1s linear 0ms;
   z-index: 2;
   nav, ul {
     display: flex;
@@ -143,14 +142,14 @@ header {
   text-align: center;
   width: 100%;
   height: auto;
-  min-height: 95vh;
+  /*min-height: 95vh;*/
   padding-top: 40px;
   padding-bottom: 40px;
   gap: 20px;
   transition: 0.5s linear 1ms;
-  background-image: url('../assets/pngegg.png');
   background-position: center;
   background-size: cover;
+  position: relative;
 }
 .create-task h1 {
   height: 100px;
@@ -161,6 +160,7 @@ header {
 }
 .create-task .create-task-about {
   width: 80%;
+  display: none;
 }
 .create-task p {
   color: var(--cinza-escuro);
@@ -169,6 +169,7 @@ header {
 }
 .create-task .create-task-button button {
   padding: 15px;
+  margin-top: 40px;
   border-radius: 6px;
   background-color: var(--verde);
   color: var(--cinza-escuro);
@@ -179,8 +180,10 @@ header {
     opacity: 0.8;
   }
 }
-.create-task .status-menssage {
+.create-task .area-status-menssage {
   color: var(--cinza-escuro);
+  height: 20px;
+  width: 100%;
 }
 
 main {
@@ -189,15 +192,20 @@ main {
   /*overflow-x:visible;*/
   min-height: 95vh;
   height: auto;
+  h1 {
+   height: 40px;
+   color: var(--cinza-escuro);
+   font-size: x-large;
+  }
 }
+ 
 .all-tasks-area{
-  width:calc( 300vw);
-  height: 100%;
+  width: 100%;
+  height: auto;
   display: flex;
   align-items: start;
-  overflow-x: scroll;
   justify-content:start;
-  flex-direction: row;
+  flex-direction: column;
   padding-top: 20px;
 }
 .task-list-todo,
@@ -208,21 +216,13 @@ main {
   align-items: start;
   justify-content: start;
   text-align: center;
-  width: auto;
-  min-width: 600px;
-  /*min-height: 95vh;*/
-  height: auto;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-left: 10px;
-  border-top: 4px solid var(--verde);
-
-  h1 {
-    height: 100px;
-    margin-top: 30px;
-    color: var(--cinza-escuro);
-    font-size: x-large;
-  }
+  width: 100%;
+  overflow-x: hidden;
+  overflow-x: scroll;
+  border-bottom: 4px solid var(--verde);
+  padding-bottom: 10px;
+  position: relative;
+  margin-bottom: 20px;
 }
 .todo-list,
 .doing-list,
@@ -232,7 +232,6 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 100%;
   height: auto;
   position: relative;
   background-color: #282A3510;
@@ -273,7 +272,6 @@ main {
     height: 30px;
     width: 30px;
     position: absolute;
-    z-index: 0;
     font-size: small;
     font-weight: bold;
     color: var(--cinza-escuro);
@@ -304,13 +302,17 @@ main {
 }
 
 .tasks-area, .tasks-area-1, .tasks-area-2 {
-  padding-bottom: 160px;
-  width: 100%;
+  padding: 20px;
+  width: auto;
+  min-width: 100%;
   display: grid;
   height: auto;
-  min-height: 45vh;
-  grid-template-columns: repeat(2, 1fr);
-  justify-items: center;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  /*grid-template-columns: repeat(auto, 1fr);*/
+  justify-content: start;
   background-color: #282A3510;
 }
 .create-task-modal{
@@ -318,26 +320,29 @@ main {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 110vh;
-  position: fixed;
-  background-color: #282A3599;
-  z-index: 50;
+  height: auto;
+  z-index: 10;
   transition: 0.5s linear 1ms;
-  span{
+  .close-modal{
+    margin-top: -15px;
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    width: 60px;
-    margin: 80px 10px;
-    border-radius: 50%;
-    position: absolute;
-    color: var(--cinza-escuro);
-    top: 0;
-    right: 0;
-    &:hover {
-      background-color: #282A3510;
+    align-items: end;
+    justify-content: end;
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 20;
+      &:hover {
+        background-color: #DDDDDD70;
+      }
     }
+    
   }
 }
 form {
@@ -354,6 +359,7 @@ form {
   padding: 20px;
   border: 1px solid var(--cinza-claro);
   border-radius: 8px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   label {
     font-weight: bold;
     color: var(--cinza-claro);
@@ -367,10 +373,17 @@ form {
     border: 1px solid var(--cinza-claro);
     border-radius: 4px;
   }
+  input::password {
+    padding: 8px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--cinza-claro);
+    border-radius: 4px;
+  }
   input:focus {
-      outline: none;
-      border-color: var(--verde);
-    }
+    outline: none;
+    border-color: var(--verde);
+  }
   textarea {
     padding: 10px;
     height: 100px;
@@ -378,6 +391,7 @@ form {
     border: 1px solid var(--cinza-claro);
     border-radius: 4px;
     resize: vertical;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   textarea:focus {
     outline: none;
@@ -429,6 +443,7 @@ form {
       text-decoration: none;
       gap: 0px;
       p{
+        padding: 0px 7px ;
         font-size: x-small;
         color: var(--cinza-claro);
       }
@@ -470,9 +485,9 @@ form {
     }
   }
   .menu {
-    width: 100%;
+    width: 50%;
     right: -100%;
-    height: 100vh;
+    height: 200px;
     top:5vh;
     nav,
     ul {
@@ -480,14 +495,16 @@ form {
       justify-content: flex-start;
     }
   }
-  .task-list-todo,
-  .task-list-doing,
-  .task-list-done{
-    min-width: 300px;
-    h1{
+  main {
+    width: 90vw;
+    min-height:50vh ;
+    h1 {
+      height: 40px;
+      color: var(--cinza-escuro);
       font-size: large;
     }
   }
+  
   .title {
     font-size: 12px;
     padding-bottom: 5px;
@@ -502,11 +519,13 @@ form {
     width: 150px;
     height: 100px;
   }
+  
   .tasks-area,
   .tasks-area-1,
   .tasks-area-2 {
-    padding-bottom: 130px;
-  grid-template-columns: repeat(1, 1fr);
+    padding: 20px;
+    min-height: 120px;
+    gap: 15px;
   }
   
   .create-task h1{

@@ -3,7 +3,7 @@ import { URL_GET } from "../secret/secret.js";
 /**
  * Função para listar as tarefas
  * Esta função é responsável por listar as tarefas. Ela envia uma requisição GET para o backend e exibe mensagens de status para o usuário.
- * @returns { void } Não retorna nada, apenas executa a ação de listar as tarefas e exibir mensagens de status.
+ * @returns { void } Retorna uma listar as tarefas e exibir mensagens de status.
  */
 const statusMessage = document.querySelector('.status-menssage');
 

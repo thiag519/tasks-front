@@ -9,6 +9,7 @@ import { createTask } from "./api/createTask.js";
 let c = (el) => document.querySelector(el); //seleciona um elemento
 let ca = (el) => document.querySelectorAll(el);//seleciona varios elementos
 
+createTask();
 
 // Abrir e fechar o menu
 let menuMob = c('.menu');
@@ -65,18 +66,21 @@ const loadTasks = async () => {
 loadTasks();
 
 //Abrir e fechar o modal de criação de task
-
+const form = document.querySelector('.create-task-modal form');
 const modal = c('.create-task-modal');
 const openTaskBuild = c('.create-task-button button')
 //console.log(openTaskBuild);
 openTaskBuild.addEventListener('click', () => {
   modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+  //document.body.style.overflow = 'hidden';
+  openTaskBuild.style.display = 'none';
 });
 const closeTaskBuild = c('.create-task-modal span')
 closeTaskBuild.addEventListener('click', () => {
   modal.style.display = 'none';
-  document.body.style.overflow = '';
+  //document.body.style.overflow = '';
+  openTaskBuild.style.display = 'flex';
+  form.reset();
 });
 
 // Funçao que observa o scroll para por o active na section que estiver sendo exibida
@@ -96,7 +100,7 @@ window.addEventListener('scroll', () => {
   });
 });
 
-const form = document.querySelector('.create-task-modal form');
+
 const statusMessage = document.querySelector('.status-menssage');
 
 if(tasksLocalhost.length > 0){
