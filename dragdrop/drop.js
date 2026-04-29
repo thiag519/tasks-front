@@ -30,22 +30,23 @@ export const drop  = async (e) => {
   const areaDrop = e.currentTarget;
   //console.log("A onde dropa",areaDrop)
   try {
-    
+    const password = prompt("Digite a senha para atualizar a tarefa:");
+
     if(el.classList.contains('todo') && areaDrop === tasksArea1){
       el.classList.replace('todo', 'doing');
       areaDrop.appendChild(el);
       console.log(id)
-      await changeTask(id, 'doing');
+      await changeTask(id, 'doing', password);
     }
     if(el.classList.contains('doing') && areaDrop === tasksArea2){
       el.classList.replace('doing', 'done')
       areaDrop.appendChild(el);
-      await changeTask(id, 'done');
+      await changeTask(id, 'done', password);
     }
     if(el.classList.contains('done') && areaDrop === tasksArea1){
       el.classList.replace('done', 'doing');
       areaDrop.appendChild(el);
-      await changeTask(id, 'doing');
+      await changeTask(id, 'doing', password);
     }
   } catch (err) {
     console.error('Erro ao atualizar a tarefa:', err)

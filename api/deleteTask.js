@@ -5,11 +5,9 @@
  * @returns { void } Não retorna nada, apenas executa a ação de excluir a tarefa e exibir mensagens de status.
  */
 //import { URL_DELETE } from "../secret/secret.js";
+import { getTasks } from "./getTasks.js";
 
-const statusMessage = document.querySelector('.status-menssage');
-
-export const deleteTask = async (id) => {
-  const password = prompt("Digite a senha para excluir a tarefa:");
+export const deleteTask = async (id, password) => {
   try {
     const response = await fetch(`http://localhost:8080/tasks/${id}`, {
       method: "DELETE",
@@ -19,10 +17,9 @@ export const deleteTask = async (id) => {
       }
     });
     if(response.ok){
-      statusMessage.textContent = "Tarefa excluída com sucesso!";
+      getTasks(); 
     }
     if(!response.ok){
-      statusMessage.textContent = "Erro ao excluir a tarefa. Tente novamente.";
       console.error("Erro ao excluir a tarefa:", response.statusText);
     } 
   } catch (err) {
@@ -30,8 +27,3 @@ export const deleteTask = async (id) => {
   }
 };
 
-if(statusMessage.textContent !== ''){
-    setInterval(() => {
-      statusMessage.textContent = '';
-  }, 5000);
-}

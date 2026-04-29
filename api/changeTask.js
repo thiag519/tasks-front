@@ -8,11 +8,7 @@
 //import { URL_PUT } from "../secret/secret.js";
 import { getTasks } from "./getTasks.js";
 
-
-const statusMessage = document.querySelector('.status-menssage');
-
-export const changeTask = async (id, status) => {
-  const password = prompt("Digite a senha para atualizar a tarefa:");
+export const changeTask = async (id, status, password) => {
 
   try {
     const response = await fetch(`http://localhost:8080/tasks/${id}`, {
@@ -25,21 +21,14 @@ export const changeTask = async (id, status) => {
 
     }); 
     if(response.ok){
-      statusMessage.textContent = "Tarefa atualizada com sucesso!";
+      getTasks();
     }
     if(!response.ok){
-      statusMessage.textContent = "Erro ao atualizar a tarefa. Tente novamente.";
-      console.error("Erro ao atualizar a tarefa:", response.statusText);
-      getTasks(); // Recarrega as tarefas para refletir o estado atual do backend
+      console.error("Erro na resposta do backend:", response.statusText);
+      getTasks(); 
     }
    
   } catch (err) {
     console.error("Erro ao atualizar a tarefa:", err);
   }
-} 
-
-if(statusMessage.textContent !== ''){
-    setInterval(() => {
-      statusMessage.textContent = '';
-  }, 5000);
-}
+};

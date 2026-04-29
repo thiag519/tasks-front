@@ -6,37 +6,25 @@ import { tasks } from "../data/tasks.js";
  * Esta função é responsável por listar as tarefas. Ela envia uma requisição GET para o backend e exibe mensagens de status para o usuário.
  * @returns { void } Retorna uma listar as tarefas e exibir mensagens de status.
  */
-const statusMessage = document.querySelector('.status-menssage');
+//const statusMessage = document.querySelector('.status-menssage');
 
 
 export const getTasks = async () => {
   
   try {
     const response = await fetch(`http://localhost:8080/tasks`);
-    //console.log(response);
     const result = await response.json();
-    //console.log(result);
 
     if(response.ok && result.success){
-      statusMessage.textContent = "Tarefas listadas com sucesso!";
+
       return result.data;
     }else{
-      statusMessage.textContent = result.error || "Erro ao listar as tarefas. Tente novamente."
+      console.error("Erro ao listar as tarefas:", result.error || "Erro desconhecido");
       return [];
     } 
   } catch (err) {
     console.error("Erro ao listar as tarefas:", err);
-    //statusMessage.textContent = "Erro ao listar as tarefas. Tente novamente.";
-    
     return []; 
   }
 };
-/*setTimeout(() => {
-  statusMessage.textContent = '';
-}, 5000);*/
-if(statusMessage){
-  statusMessage.textContent = "Carregando...";
-  setTimeout(() => {
-      statusMessage.textContent = '';
-  }, 5000)
-}
+
