@@ -1,4 +1,4 @@
-import { URL_GET } from "../secret/secret.js";
+//import { URL_GET } from "../secret/secret.js";
 import { tasks } from "../data/tasks.js";
 
 /**
@@ -12,7 +12,7 @@ const statusMessage = document.querySelector('.status-menssage');
 export const getTasks = async () => {
   
   try {
-    const response = await fetch(URL_GET);
+    const response = await fetch(`http://localhost:8080/tasks`);
     //console.log(response);
     const result = await response.json();
     //console.log(result);

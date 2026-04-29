@@ -1,13 +1,14 @@
 import { listingTasks } from "./utils/listingTasks.js";
-//import { tasks } from "./data/tasks.js";
+import { tasks } from "./data/tasks.js";
 
-import { createTaskLocal, getTasksLocal } from "./utils/getTasksLocal.js";
+//import { createTaskLocal, getTasksLocal } from "./utils/getTasksLocal.js";
 import { getTasks } from "./api/getTasks.js";
 import { createTask } from "./api/createTask.js";
 
 
 let c = (el) => document.querySelector(el); //seleciona um elemento
 let ca = (el) => document.querySelectorAll(el);//seleciona varios elementos
+const statusMessage = document.querySelector('.status-menssage');
 
 createTask();
 
@@ -51,15 +52,17 @@ menuBtnMob.forEach((item) => {
 });
 
 //busca tasks na localStorage para exibir caso a requisição para o backend falhe
-let tasksLocalhost = getTasksLocal();
+//let tasksLocalhost = getTasksLocal();
 
 const loadTasks = async () => {
-  const tasks = await getTasks();
-  console.log("Tarefas carregadas do backend:", tasks);
-  if(tasks.length > 0){
-    listingTasks(tasks);
+  const tasksBackend = await getTasks();
+  console.log("Tarefas carregadas do backend:", tasksBackend);
+  if(tasksBackend.length > 0){
+    listingTasks(tasksBackend);
+    statusMessage.textContent = 'Minhas tarefas...';
   }else{
-    listingTasks(tasksLocalhost);
+    listingTasks(tasks);
+    statusMessage.textContent = 'Tarefas de demostração...';
   }
 }
 
@@ -100,9 +103,7 @@ window.addEventListener('scroll', () => {
   });
 });
 
-
-const statusMessage = document.querySelector('.status-menssage');
-
+/*
 if(tasksLocalhost.length > 0){
   form.addEventListener('submit', (e) =>{
   e.preventDefault()
@@ -122,7 +123,7 @@ if(tasksLocalhost.length > 0){
   
 });
 }
-
+*/
 
 
 //localStorage.clear()
