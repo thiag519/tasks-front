@@ -4,7 +4,7 @@
  * @returns { void } Não retorna nada, apenas executa a ação de soltar o elemento arrastado.
  */
 
-import { changeTask } from "../api/changeTask.js";
+import { changeTask } from "../service/changeTask.js";
 //import { changeTaskLocal } from "../utils/getTasksLocal.js";
 import { taskId } from "./event.js";
 

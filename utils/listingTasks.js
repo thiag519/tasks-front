@@ -2,7 +2,7 @@ import { dragover } from '../dragdrop/drag.js';
 import { dragStart } from '../dragdrop/event.js';
 import { drop } from '../dragdrop/drop.js';
 //import { deleteTaskLocal } from './getTasksLocal.js';
-import { deleteTask } from '../api/deleteTask.js';
+import { deleteTask } from '../service/deleteTask.js';
 
 
 let c = (el) => document.querySelector(el);

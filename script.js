@@ -2,8 +2,8 @@ import { listingTasks } from "./utils/listingTasks.js";
 import { tasks } from "./data/tasks.js";
 
 //import { createTaskLocal, getTasksLocal } from "./utils/getTasksLocal.js";
-import { getTasks } from "./api/getTasks.js";
-import { createTask } from "./api/createTask.js";
+import { getTasks } from "./service/getTasks.js";
+import { createTask } from "./service/createTask.js";
 
 
 let c = (el) => document.querySelector(el); //seleciona um elemento
