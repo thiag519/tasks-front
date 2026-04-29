@@ -1,11 +1,14 @@
-//import { tasks } from "../data/tasks.js";
+import { tasks } from "../data/tasks.js";
 import { taskId } from "../dragdrop/event.js";
 
+const statusMessage = document.querySelector('.status-menssage');
 
 export const getTasksLocal = () => {
   let tasksStorge = localStorage.getItem("tasks");
   if(!tasksStorge) {
-    return [];
+    statusMessage.textContent = "Listar de tarefas local...";
+    return tasks;
+    
   }
   return JSON.parse(tasksStorge);
 }

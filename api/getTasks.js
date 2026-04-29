@@ -26,9 +26,9 @@ export const getTasks = async () => {
     } 
   } catch (err) {
     console.error("Erro ao listar as tarefas:", err);
-    statusMessage.textContent = "Erro ao listar as tarefas. Tente novamente.";
+    //statusMessage.textContent = "Erro ao listar as tarefas. Tente novamente.";
     
-    return tasks; // Retorna as tarefas locais caso a requisição falhe
+    return []; 
   }
 };
 /*setTimeout(() => {
