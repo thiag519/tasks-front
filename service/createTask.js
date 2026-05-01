@@ -5,13 +5,13 @@
  */
 
 //import { URL_POST } from "../secret/secret.js";
-import { getTasks } from "./getTasks.js";
+//import { getTasks } from "./getTasks.js";
 
 
 export const createTask = async (data, password) => {
   console.log("Criando tarefa com os dados:", data, "e senha:", password);
   try {
-    const response = await fetch("http://localhost:8080/tasks/add", {
+    const response = await fetch("https://tasks-java-1.onrender.com/tasks/add", {
       method: "POST",
       headers:{
         "Content-Type": "application/json",

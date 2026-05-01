@@ -52,7 +52,7 @@ export const listingTasks = (tasks) => {
     if(description) description.textContent = item.description;
 
     deleteTaskElement.addEventListener('click', () => {
-      const password = prompt("Digite a senha para excluir a tarefa permanentemente. Sem a senha, a tarefa não será excluída permanentemente.");
+      const password = prompt("Digite a senha para excluir a tarefa permanente:");
       task.style.display = 'none';
       deleteTask(item.id, password)
     });

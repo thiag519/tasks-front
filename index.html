@@ -32,7 +32,7 @@
   </header>
   
   <section class="create-task">
-    <h1>Organize suas tarefas do jeito facio e prático</h1>
+    <h1>Organize suas tarefas do jeito fácil e prático</h1>
     
     <div class="create-task-about">
       <p>Organizei meus estudos e atividades com um software que desenvolvi para facilitar e otimizar minha rotina de estudos e
@@ -56,16 +56,19 @@
         </div>
         
         <h2>Criar Nova Tarefa</h2>
-        <label for="task-title">Título</label>
-        <input type="text" id="task-title" name="title" maxlength="30">
+        <!--<label for="task-title"></label>-->
+        <input type="text" id="task-title" name="title" maxlength="80" placeholder="Título">
 
-        <label for="task-description">Descrição</label>
-        <textarea id="task-description" name="description" maxlength="200" required></textarea>
-
-        <label for="task-password">Senha</label>
-        <input type="password" id="task-password" name="password" required>
-
-        <button type="submit" >Criar Tarefa</button>
+        <!--<label for="task-description"></label>-->
+        <textarea id="task-description" name="description" maxlength="200" required placeholder="Descrição"></textarea>
+        <!--<label for="task-password"></label>-->
+        <div class="toggle-password-area">
+          
+          <input type="password" id="task-password" name="password" required placeholder="Senha">
+          <span class="toggle-password"><img src="assets/olho-1.png" alt=""></span>
+        </div>
+        
+        <button type="submit">Criar Tarefa</button>
       </form>
     </div>
     <div class="area-status-menssage">

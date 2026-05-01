@@ -12,7 +12,7 @@ import { tasks } from "../data/tasks.js";
 export const getTasks = async () => {
   
   try {
-    const response = await fetch(`http://localhost:8080/tasks`);
+    const response = await fetch(`https://tasks-java-1.onrender.com/tasks`);
     const result = await response.json();
 
     if(response.ok && result.success){

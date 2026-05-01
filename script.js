@@ -5,14 +5,13 @@ import { tasks } from "./data/tasks.js";
 import { getTasks } from "./service/getTasks.js";
 import { createTask } from "./service/createTask.js";
 
-
 let c = (el) => document.querySelector(el); //seleciona um elemento
 let ca = (el) => document.querySelectorAll(el);//seleciona varios elementos
 const statusMessage = document.querySelector('.status-menssage');
 
 
 
-//busca tarefas em tasks para exibir caso a requisição para o backend falhe ou usuário esteja testando ou não tenha a senha.
+// Função para listar as tarefas
 //let tasksLocalhost = getTasksLocal();
 
 const loadTasks = async () => {
@@ -33,6 +32,24 @@ const loadTasks = async () => {
 loadTasks();
 
 
+
+// Função para ezibir e ocultar senha na criação de tarefa
+
+const passwordInput = c('#task-password');
+const togglePassword = c('.toggle-password');
+const togglePasswordImage = c('.toggle-password img');
+
+togglePassword.addEventListener('click', () => {
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    togglePasswordImage.src = "assets/olho.png";
+  } else {
+    passwordInput.type = "password";
+    togglePasswordImage.src = "assets/olho-1.png";
+  }
+});
+
+
 // Função para criar uma nova tarefa
 
 const modal = document.querySelector('.create-task-modal');
@@ -48,27 +65,28 @@ form.addEventListener('submit', (e) => {
       title: formData.get('title'),
       description: formData.get('description')
     };
+      console.log("Dados do formulário:", data, "Senha:", password);
 
     if (!data.title || !data.description) {
       console.log("Título ou descrição vazios");
-      statusMessage.textContent = "Por favor, preencha todos os campos.";
+      //statusMessage.textContent = "Por favor, preencha todos os campos.";
       modal.style.display = 'none'; 
       return;
     }
     createTask(data, password);
-    statusMessage.textContent = "Tarefa criada com sucesso!";
+    //statusMessage.textContent = `Tarefa criada com sucesso! Título: ${data.title}`;
     form.reset();
     modal.style.display = 'none';
-    
+    location.reload();
   } catch (err) {
     console.error("Erro ao criar a tarefa:", err);
     statusMessage.textContent = "Erro ao criar a tarefa. Tente novamente.";
     //document.body.style.overflow = '';
   }  
-  setTimeout(() => {
+  /*setTimeout(() => {
     statusMessage.textContent = " ";
     loadTasks();
-  },2000);
+  },2000);*/
   
 });
 

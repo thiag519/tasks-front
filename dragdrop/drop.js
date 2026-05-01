@@ -30,7 +30,7 @@ export const drop  = async (e) => {
   const areaDrop = e.currentTarget;
   //console.log("A onde dropa",areaDrop)
   try {
-    const password = prompt("Digite a senha para atualizar a tarefa:");
+    const password = prompt("Digite a senha para atualizar a tarefa permanente: ");
 
     if(el.classList.contains('todo') && areaDrop === tasksArea1){
       el.classList.replace('todo', 'doing');

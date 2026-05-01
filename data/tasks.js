@@ -32,8 +32,8 @@ export const tasks =
     },
     {
       "id": "6",
-      "title": "Construir Frontend",
-      "description": "Criar interface para tasks",
+      "title": "Freela da Construtora",
+      "description": "Conectar o WhatsApp da empresa com os links clicáveis do site.",
       "status": "doing"
     }
   ]

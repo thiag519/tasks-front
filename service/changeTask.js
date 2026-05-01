@@ -11,7 +11,7 @@ import { getTasks } from "./getTasks.js";
 export const changeTask = async (id, status, password) => {
 
   try {
-    const response = await fetch(`http://localhost:8080/tasks/${id}`, {
+    const response = await fetch(`https://tasks-java-1.onrender.com/tasks/${id}`, {
       method: "PATCH",
       headers:{
         "Content-Type": "application/json",
