@@ -1,8 +1,8 @@
 /**
  * Função para excluir uma tarefa
- * Esta função é responsável por excluir uma tarefa. Ela envia uma requisição DELETE para o backend e exibe mensagens de status para o usuário.
+ * Esta função é responsável por excluir uma tarefa. Ela envia uma requisição DELETE para o backend e caso o usuário não possua a senha so deleta no front.
  * @param { string } id - O ID da tarefa a ser excluída.
- * @returns { void } Não retorna nada, apenas executa a ação de excluir a tarefa e exibir mensagens de status.
+ * @returns { void } Não retorna nada, apenas executa a ação de excluir a tarefa.
  */
 //import { URL_DELETE } from "../secret/secret.js";
 import { getTasks } from "./getTasks.js";

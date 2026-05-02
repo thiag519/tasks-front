@@ -1,7 +1,7 @@
 /**
  * Função para criar uma nova tarefa
- * Esta função é responsável por criar uma nova tarefa. Ela coleta os dados do formulário, envia uma requisição POST para o backend e exibe mensagens de status para o usuário.
- * @returns { void } Não retorna nada, apenas executa a ação de criar uma nova tarefa e exibir mensagens de status.
+ * Esta função é responsável por criar uma nova tarefa. Ela coleta os dados do formulário, envia uma requisição POST para o backend e caso o usuário não possua a senha a tarefa não será criada.
+ * @returns { void } Não retorna nada, apenas executa a ação de criar uma nova tarefa.
  */
 
 //import { URL_POST } from "../secret/secret.js";
@@ -24,7 +24,7 @@ export const createTask = async (data, password) => {
     if(result.success && response.ok) {
      console.log("Tarefa criada com sucesso:", result);
     }else {
-      console.error("Erro ao criar a tarefa:", result.error || "Erro desconhecido");
+      console.error("Erro ao criar a tarefa:", result.erro || "Erro desconhecido");
     }
   } catch (err) {
     console.error("Erro ao criar a tarefa:", err);

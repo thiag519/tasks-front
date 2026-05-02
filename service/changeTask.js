@@ -1,8 +1,8 @@
 /**
  * Função para atualizar uma tarefa
- * Esta função é responsável por atualizar uma tarefa. Ela envia uma requisição PUT para o backend e exibe mensagens de status para o usuário.
+ * Esta função é responsável por atualizar uma tarefa. Ela envia uma requisição PUT para o backend e caso o usuário não possua a senha so altera no front.
  * @param { string } id - O ID da tarefa a ser atualizada.
- * @returns { void } Não retorna nada, apenas executa a ação de atualizar a tarefa e exibir mensagens de status.
+ * @returns { void } Não retorna nada, apenas executa a ação de atualizar a tarefa.
  */
 
 //import { URL_PUT } from "../secret/secret.js";
@@ -21,6 +21,7 @@ export const changeTask = async (id, status, password) => {
 
     }); 
     if(response.ok){
+      console.log("Tarefa atualizada com sucesso", response.success);
       getTasks();
     }
     if(!response.ok){
