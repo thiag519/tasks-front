@@ -16,6 +16,7 @@ const statusMessage = document.querySelector('.status-menssage');
 
 const loadTasks = async () => {
   statusMessage.textContent = 'Carregando...';
+  listingTasks(tasks);
   const tasksBackend = await getTasks();
   if(tasksBackend.length > 0){
     listingTasks(tasksBackend);
