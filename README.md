@@ -5,7 +5,13 @@ O sistema conta com um botão na página inicial que permite criar novas tarefas
 As tarefas são organizadas em áreas separadas que representam os estágios do processo: “A fazer”, “Fazendo” e “Feito”, cada uma identificada por cores específicas.
 Para alterar o estágio de uma tarefa, basta arrastá-la para a próxima etapa.
 
+#### [Lista de Tarefas](https://tasks-front-dusky.vercel.app/)
+
 ---
+
+
+![Lista de Tarefas](assets/Lista%20de%20Tarefas.PNG)
+
 
 
 ## Tecnologias utilizadas
@@ -18,19 +24,18 @@ Para alterar o estágio de uma tarefa, basta arrastá-la para a próxima etapa.
 
 - Futuramnete receber mensagem no whatsapp sobre tarefas com tempo previsto
 
-## 🧩 Estrutura do projeto
+## Estrutura do projeto
 
 ```
-├───api         # Funções que comunicam com backend
+├───service     # Funções que comunicam com backend
 ├───assets      # Imagens e ícones
 ├───data        # Dados das tarefas para ser usado sem banco de dados 
-├───docs        # Documentação do projeto
 ├───dragdrop    # Funções responsaves pelo arrasta e solta (drag and drop) 
 ├───style       # Estilos em CSS
 └───utils       # Funções auxiliares
 
 ```
-## ⚙️ Como executar o projeto
+## Como executar o projeto
 
 #### 1. Clone este repositório:
 
