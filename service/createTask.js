@@ -9,7 +9,6 @@
 
 
 export const createTask = async (data, password) => {
-  console.log("Criando tarefa com os dados:", data, "e senha:", password);
   try {
     const response = await fetch("https://tasks-java-1.onrender.com/tasks/add", {
       method: "POST",

@@ -17,7 +17,6 @@ const statusMessage = document.querySelector('.status-menssage');
 const loadTasks = async () => {
   statusMessage.textContent = 'Carregando...';
   const tasksBackend = await getTasks();
-  console.log("Tarefas carregadas do backend:", tasksBackend);
   if(tasksBackend.length > 0){
     listingTasks(tasksBackend);
     statusMessage.textContent = 'Minhas tarefas...';
@@ -50,6 +49,7 @@ togglePassword.addEventListener('click', () => {
 });
 
 
+
 // Função para criar uma nova tarefa
 
 const modal = document.querySelector('.create-task-modal');
@@ -65,29 +65,27 @@ form.addEventListener('submit', (e) => {
       title: formData.get('title'),
       description: formData.get('description')
     };
-      console.log("Dados do formulário:", data, "Senha:", password);
 
     if (!data.title || !data.description) {
-      console.log("Título ou descrição vazios");
-      //statusMessage.textContent = "Por favor, preencha todos os campos.";
+      statusMessage.textContent = "Por favor, preencha todos os campos.";
       modal.style.display = 'none'; 
       return;
     }
     createTask(data, password);
-    //statusMessage.textContent = `Tarefa criada com sucesso! Título: ${data.title}`;
-    form.reset();
-    modal.style.display = 'none';
-    location.reload();
+    
+    setTimeout(() => {
+      form.reset();
+      modal.style.display = 'none';
+      openTaskBuild.style.display = 'flex';
+      //location.reload();
+      loadTasks();
+    }, 2000);
+    
   } catch (err) {
     console.error("Erro ao criar a tarefa:", err);
     statusMessage.textContent = "Erro ao criar a tarefa. Tente novamente.";
     //document.body.style.overflow = '';
   }  
-  /*setTimeout(() => {
-    statusMessage.textContent = " ";
-    loadTasks();
-  },2000);*/
-  
 });
 
 

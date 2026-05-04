@@ -14,7 +14,7 @@ export const getTasks = async () => {
   try {
     const response = await fetch(`https://tasks-java-1.onrender.com/tasks`);
     const result = await response.json();
-    console.log("Resposta do backend ao listar as tarefas:", result);
+    //console.log("Resposta do backend ao listar as tarefas:", result);
     if(response.ok && result.success){
 
       return result.data;
